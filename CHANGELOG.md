@@ -1,3 +1,6 @@
+## 0.0.4
+chore: add gif to readme
+
 ## 0.0.3
 changing name of main class to ScrolLVelocityNotifier
 
