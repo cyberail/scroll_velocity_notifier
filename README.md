@@ -55,10 +55,10 @@ It acts purely as a transparent observer in the widget tree.
 
 ## 🚀 Basic Usage
 
-Wrap any scrollable widget with `ScrollVelocityProvider`:
+Wrap any scrollable widget with `ScrollVelocityNotifier`:
 
 ```dart
-ScrollVelocityProvider(
+ScrollVelocityNotifier(
   onNotification: (notification, velocity) {
     debugPrint('Velocity: $velocity px/s');
     return false; // allow notification to bubble up
@@ -92,7 +92,7 @@ By default, velocity is reported as `0` during overscroll.
 To include overscroll velocity (e.g. when using `BouncingScrollPhysics`):
 
 ```dart
-ScrollVelocityProvider(
+ScrollVelocityNotifier(
   includeOversScroll: true,
   onNotification: (notification, velocity) {
     debugPrint('Overscroll velocity: $velocity');
@@ -116,7 +116,7 @@ ScrollVelocityProvider(
 ```dart
 double appBarOffset = 0;
 
-ScrollVelocityProvider(
+ScrollVelocityNotifier(
   onNotification: (notification, velocity) {
     if (velocity > 800) {
       appBarOffset = -100;
@@ -147,7 +147,7 @@ ScrollVelocityProvider(
 ### Trigger Animations Based on Scroll Velocity
 
 ```dart
-ScrollVelocityProvider(
+ScrollVelocityNotifier(
   onNotification: (notification, velocity) {
     if (velocity.abs() > 1200) {
       debugPrint('Fast scroll detected');
@@ -167,7 +167,7 @@ ScrollVelocityProvider(
 
 ## 🔌 StreamController Integration
 
-`ScrollVelocityProvider` can optionally emit scroll velocity updates into a
+`ScrollVelocityNotifier` can optionally emit scroll velocity updates into a
 user-provided `StreamController`.
 
 This allows scroll velocity data to be consumed outside the widget tree,
@@ -189,7 +189,7 @@ void dispose() {
   super.dispose();
 }
 
-ScrollVelocityProvider(
+ScrollVelocityNotifier(
   controller: controller,
   child: ListView.builder(
     itemCount: 50,

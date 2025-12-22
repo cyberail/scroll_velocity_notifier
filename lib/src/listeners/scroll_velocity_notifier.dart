@@ -17,8 +17,8 @@ import '../types/velocity_listener_callback.dart';
 /// - Showing / hiding UI based on scroll speed
 /// - Applying inertia-based effects
 /// - Advanced scroll-aware animations
-class ScrollVelocityProvider extends ProxyWidget {
-  const ScrollVelocityProvider({
+class ScrollVelocityNotifier extends ProxyWidget {
+  const ScrollVelocityNotifier({
     super.key,
     required super.child,
     this.onNotification,
@@ -74,11 +74,11 @@ class ScrollVelocityProvider extends ProxyWidget {
 
   @override
   Element createElement() {
-    return _ScrollVelocityProvider(this);
+    return _ScrollVelocityNotifier(this);
   }
 }
 
-/// Element implementation for [ScrollVelocityProvider].
+/// Element implementation for [ScrollVelocityNotifier].
 ///
 /// This element:
 /// - Listens to scroll notifications
@@ -87,8 +87,8 @@ class ScrollVelocityProvider extends ProxyWidget {
 ///
 /// Implemented as a [ProxyElement] to avoid interfering with
 /// the widget subtree while still intercepting notifications.
-class _ScrollVelocityProvider extends ProxyElement with NotifiableElementMixin {
-  _ScrollVelocityProvider(ScrollVelocityProvider super.widget);
+class _ScrollVelocityNotifier extends ProxyElement with NotifiableElementMixin {
+  _ScrollVelocityNotifier(ScrollVelocityNotifier super.widget);
 
   /// Stopwatch used to measure time between scroll updates.
   ///
@@ -121,7 +121,7 @@ class _ScrollVelocityProvider extends ProxyElement with NotifiableElementMixin {
   double? calculateVelocity(ScrollUpdateNotification updateEvent) {
     final metrics = updateEvent.metrics;
 
-    if (!(widget as ScrollVelocityProvider).includeOversScroll && metrics.pixels < metrics.minScrollExtent ||
+    if (!(widget as ScrollVelocityNotifier).includeOversScroll && metrics.pixels < metrics.minScrollExtent ||
         metrics.pixels > metrics.maxScrollExtent) {
       return 0;
     }
@@ -154,7 +154,7 @@ class _ScrollVelocityProvider extends ProxyElement with NotifiableElementMixin {
   /// - Forwards both notification and velocity to the callback
   @override
   bool onNotification(Notification notification) {
-    final ScrollVelocityProvider listener = widget as ScrollVelocityProvider;
+    final ScrollVelocityNotifier listener = widget as ScrollVelocityNotifier;
     if (listener.onNotification != null && notification is ScrollNotification) {
       double velocity = 0;
 
@@ -188,7 +188,7 @@ class _ScrollVelocityProvider extends ProxyElement with NotifiableElementMixin {
   /// ownership by this widget.
   @override
   void unmount() {
-    final listener = (widget as ScrollVelocityProvider);
+    final listener = (widget as ScrollVelocityNotifier);
     listener.controller?.close();
 
     super.unmount();
