@@ -36,7 +36,7 @@ flutter pub get
 
 ## 📸 Demo - gif is removes frames so it looks junky on the gif
 
-![Scroll velocity demo](assets/gifs/scroll_velocity_demo.gif)
+![Scroll velocity demo](https://github.com/cyberail/scroll_velocity_notifier/blob/main/assets/gifs/scroll_velocity_demo.gif?raw=true)
 
 ---
 
