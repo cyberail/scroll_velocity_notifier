@@ -34,6 +34,12 @@ flutter pub get
 
 ---
 
+## 📸 Demo - gif is removes frames so it looks junky on the gif
+
+![Scroll velocity demo](assets/gifs/scroll_velocity_demo.gif)
+
+---
+
 ## 🧠 How It Works
 
 The widget listens to `ScrollNotification`s emitted by scrollable widgets and computes velocity using:
