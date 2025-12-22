@@ -1,3 +1,6 @@
+## 0.0.6
+ref: update readme
+
 ## 0.0.5
 ref: resize demo gif
 
