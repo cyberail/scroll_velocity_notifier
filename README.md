@@ -159,34 +159,40 @@ ScrollVelocityProvider(
 
 ---
 
-## 🧩 ScrollController Ownership (Important)
+## 🔌 StreamController Integration
 
-The widget accepts an optional `ScrollController`.
+`ScrollVelocityProvider` can optionally emit scroll velocity updates into a
+user-provided `StreamController`.
 
-⚠️ **If provided, the controller is disposed when the widget is unmounted.**
+This allows scroll velocity data to be consumed outside the widget tree,
+for example by:
+- BLoC / Cubit
+- analytics systems
+- animation coordinators
+- logging or debugging tools
 
-Only pass a controller if this widget **owns it**:
+### Basic Usage
 
 ```dart
-final controller = ScrollController();
+final controller =
+    StreamController<ScrollStreamNotification>.broadcast();
 
 @override
 void dispose() {
-  // Do NOT dispose here if passed to ScrollVelocityProvider
+  controller.close();
   super.dispose();
 }
 
 ScrollVelocityProvider(
   controller: controller,
-  onNotification: (notification, velocity) {
-    return false;
-  },
-  child: ListView(
-    controller: controller,
-    children: const [],
+  child: ListView.builder(
+    itemCount: 50,
+    itemBuilder: (context, index) {
+      return ListTile(title: Text('Item $index'));
+    },
   ),
-)
-```
+);
+
 
 ---
 
@@ -199,6 +205,7 @@ ScrollVelocityProvider(
 * Safe for high-frequency scroll updates
 
 This makes it suitable for **large dashboards** and **complex scroll hierarchies**.
+
 
 ---
 

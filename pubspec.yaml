@@ -5,10 +5,10 @@ description: >
   calculates smooth, real-time scroll velocity using an exponential moving
   average. Useful for scroll-aware UI, animations, and gesture-driven effects.
 version: 0.0.1
-homepage: https://github.com/your-username/scroll_velocity_notifier
-repository: https://github.com/your-username/scroll_velocity_notifier
-issue_tracker: https://github.com/your-username/scroll_velocity_notifier/issues
-documentation: https://github.com/your-username/scroll_velocity_notifier#readme
+homepage: https://github.com/cyberail/scroll_velocity_notifier.git
+repository: https://github.com/cyberail/scroll_velocity_notifier.git
+issue_tracker: https://github.com/cyberail/scroll_velocity_notifier/issues
+documentation: https://github.com/cyberail/scroll_velocity_notifier/blob/main/README.md
 
 topics:
   - flutter

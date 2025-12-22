@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/widgets.dart';
+import 'package:scroll_velocity_notifier/src/types/scroll_stream_notification.dart';
 
 import '../types/velocity_listener_callback.dart';
 
@@ -33,14 +36,30 @@ class ScrollVelocityProvider extends ProxyWidget {
   /// further up the tree.
   final VelocityListenerCallback? onNotification;
 
-  /// Optional [ScrollController].
+  /// Optional [StreamController] used to emit scroll velocity updates.
   ///
-  /// ⚠️ Important:
-  /// If provided, this controller is disposed in the element's
-  /// `unmount()` lifecycle method. This implies ownership.
+  /// When provided, this widget will add [ScrollStreamNotification] events
+  /// to the controller whenever a [ScrollUpdateNotification] is received.
   ///
-  /// Only pass a controller here if this widget is the sole owner.
-  final ScrollController? controller;
+  /// Each emitted event contains:
+  /// - the original [ScrollNotification]
+  /// - the calculated scroll velocity (pixels per second)
+  ///
+  /// ### Ownership & Lifecycle
+  /// - The controller is **NOT disposed** by this widget.
+  /// - The caller is responsible for creating and disposing the controller.
+  /// - This allows the controller to be shared across widgets or listened to
+  ///   by multiple consumers.
+  ///
+  /// The controller should be configured as a broadcast stream if multiple
+  /// listeners are expected:
+  ///
+  /// ```dart
+  /// final controller = StreamController<ScrollStreamNotification>.broadcast();
+  /// ```
+  ///
+  /// If no controller is provided, no stream events are emitted.
+  final StreamController<ScrollStreamNotification>? controller;
 
   /// Whether scroll velocity should be calculated during overscroll.
   ///
@@ -141,6 +160,10 @@ class _ScrollVelocityProvider extends ProxyElement with NotifiableElementMixin {
 
       if (notification is ScrollUpdateNotification) {
         velocity = calculateVelocity(notification) ?? 0;
+
+        listener.controller?.add(
+          ScrollStreamNotification(notification: notification, velocity: velocity),
+        );
       }
 
       return listener.onNotification!(notification, velocity);
@@ -166,7 +189,7 @@ class _ScrollVelocityProvider extends ProxyElement with NotifiableElementMixin {
   @override
   void unmount() {
     final listener = (widget as ScrollVelocityProvider);
-    listener.controller?.dispose();
+    listener.controller?.close();
 
     super.unmount();
   }
