@@ -1,9 +1,9 @@
 name: scroll_velocity_notifier
 
 description: >
-  A lightweight Flutter utility that intercepts scroll notifications and
-  calculates smooth, real-time scroll velocity using an exponential moving
-  average. Useful for scroll-aware UI, animations, and gesture-driven effects.
+  A lightweight Flutter utility that calculates smooth,
+  real-time scroll velocity from scroll notifications, 
+  useful for scroll-aware UI and gesture-driven effects.
 version: 0.0.7
 homepage: https://github.com/cyberail/scroll_velocity_notifier.git
 repository: https://github.com/cyberail/scroll_velocity_notifier.git
