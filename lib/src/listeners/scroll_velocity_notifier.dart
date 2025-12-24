@@ -160,11 +160,9 @@ class _ScrollVelocityNotifier extends ProxyElement with NotifiableElementMixin {
 
       if (notification is ScrollUpdateNotification) {
         velocity = calculateVelocity(notification) ?? 0;
-
-        listener.controller?.add(
-          ScrollStreamNotification(notification: notification, velocity: velocity),
-        );
       }
+
+      listener.controller?.add(ScrollStreamNotification(notification: notification, velocity: velocity));
 
       return listener.onNotification!(notification, velocity);
     }
