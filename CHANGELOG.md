@@ -1,3 +1,9 @@
+## 0.0.7
+fix: send stream events even when the scrollNotification is start or end
+fix: remove automatic streamController disposal
+ref: update readme
+fix: add null check for controller before sending stream events
+
 ## 0.0.6
 ref: update readme
 
