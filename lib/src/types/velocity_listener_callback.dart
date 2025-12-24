@@ -1,3 +1,4 @@
 import 'package:flutter/widgets.dart';
 
-typedef VelocityListenerCallback = bool Function(ScrollNotification notification, double velocity);
+typedef VelocityListenerCallback = bool Function(
+    ScrollNotification notification, double velocity);

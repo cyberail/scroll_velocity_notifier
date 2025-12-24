@@ -121,7 +121,8 @@ class _ScrollVelocityNotifier extends ProxyElement with NotifiableElementMixin {
   double? calculateVelocity(ScrollUpdateNotification updateEvent) {
     final metrics = updateEvent.metrics;
 
-    if (!(widget as ScrollVelocityNotifier).includeOversScroll && metrics.pixels < metrics.minScrollExtent ||
+    if (!(widget as ScrollVelocityNotifier).includeOversScroll &&
+            metrics.pixels < metrics.minScrollExtent ||
         metrics.pixels > metrics.maxScrollExtent) {
       return 0;
     }
@@ -163,7 +164,8 @@ class _ScrollVelocityNotifier extends ProxyElement with NotifiableElementMixin {
       }
 
       if (listener.controller != null) {
-        listener.controller?.add(ScrollStreamNotification(notification: notification, velocity: velocity));
+        listener.controller?.add(ScrollStreamNotification(
+            notification: notification, velocity: velocity));
       }
 
       return listener.onNotification!(notification, velocity);
