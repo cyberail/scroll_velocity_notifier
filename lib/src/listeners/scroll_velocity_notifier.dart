@@ -186,9 +186,6 @@ class _ScrollVelocityNotifier extends ProxyElement with NotifiableElementMixin {
   /// ownership by this widget.
   @override
   void unmount() {
-    final listener = (widget as ScrollVelocityNotifier);
-    listener.controller?.close();
-
     super.unmount();
   }
 }
