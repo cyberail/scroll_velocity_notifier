@@ -1,3 +1,6 @@
+## 0.0.9
+fix: provide correct example format
+
 ## 0.0.8
 chore: format files
 feat: add examples folder
