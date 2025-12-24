@@ -1,3 +1,8 @@
+## 0.0.8
+chore: format files
+feat: add examples folder
+chore: update description
+
 ## 0.0.7
 fix: send stream events even when the scrollNotification is start or end
 fix: remove automatic streamController disposal
