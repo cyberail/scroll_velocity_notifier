@@ -34,7 +34,7 @@ flutter pub get
 
 ---
 
-## 📸 Demo - gif is removes frames so it looks junky on the gif
+## 📸 Demo - gif removes frames so it looks junky on the gif
 
 ![Scroll velocity demo](https://raw.githubusercontent.com/cyberail/scroll_velocity_notifier/refs/heads/main/assets/gifs/scroll_velocity_demo.gif)
 
@@ -198,6 +198,7 @@ ScrollVelocityNotifier(
     },
   ),
 );
+```
 
 
 ---
@@ -250,13 +251,3 @@ See `LICENSE` file for details.
 Issues and pull requests are welcome.
 If you find a bug or have a feature idea, feel free to open an issue.
 
----
-
-If you want next:
-
-* a `CHANGELOG.md`
-* an `example/` app
-* pub.dev score optimization
-* API tightening (ownership-safe controller handling)
-
-Just tell me.
