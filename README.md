@@ -4,7 +4,7 @@
 
 It is designed for **scroll-aware UI**, **gesture-driven effects**, and **advanced animations**, without imposing layout constraints or architectural opinions.
 
----
+> From the creator of **[http_mock_adapter](https://pub.dev/packages/http_mock_adapter)**, a widely used Flutter testing utility.
 
 ## ✨ Features
 
@@ -73,7 +73,8 @@ ScrollVelocityNotifier(
   ),
 )
 ```
-
+## Further reading
+- [Understanding internals of the](https://your-article-link)
 ---
 
 ## 📐 Velocity Semantics
