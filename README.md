@@ -74,7 +74,7 @@ ScrollVelocityNotifier(
 )
 ```
 ## Further reading
-- [Understanding internals of the package](https://your-article-link)
+- [Understanding internals of the package](https://dev.to/cyberail/scroll-is-not-just-position-introducing-scrollvelocitynotifier-5g0h)
 ---
 
 ## 📐 Velocity Semantics
