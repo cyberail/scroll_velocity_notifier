@@ -1,3 +1,6 @@
+## 0.0.11
+* Update readme
+
 ## 0.0.10
 * fix: changelog appearence on pub.dev
 
