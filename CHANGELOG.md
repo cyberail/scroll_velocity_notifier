@@ -1,3 +1,6 @@
+## 0.0.10
+* fix: changelog appearence on pub.dev
+
 ## 0.0.9
 * fix: provide correct example format
 
